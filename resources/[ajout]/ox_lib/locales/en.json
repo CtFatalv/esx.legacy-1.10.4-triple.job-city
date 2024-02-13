@@ -1,0 +1,14 @@
+{
+  "language": "English",
+  "ui": {
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "confirm": "Confirmer",
+    "more": "Plus..."
+  },
+  "txadmin_announcement": "Annonce du serveur par %s",
+  "txadmin_dm": "Message direct de %s",
+  "txadmin_warn": "Vous avez été prévenu par %s",
+  "txadmin_warn_content": "%s \nID d'action : %s",
+  "txadmin_scheduledrestart": "Redémarrage programmé"
+}
