@@ -105,29 +105,29 @@ Config.Blips = {
         Sprite = 366,
         Color = 47,
         Scale = 0.7,
-        Name = "Clothing Store",
+        Name = "Magasin de vêtement",
     },
     ["barber"] = {
         Show = true,
         Sprite = 71,
         Color = 0,
         Scale = 0.7,
-        Name = "Barber",
+        Name = "Barbier",
     },
     ["tattoo"] = {
         Show = true,
         Sprite = 75,
         Color = 4,
         Scale = 0.7,
-        Name = "Tattoo Shop",
-    }
-    --[[["surgeon"] = {
-        Show = true,
+        Name = "Tattoeur",
+    },
+    ["surgeon"] = {
+        Show = false,
         Sprite = 102,
         Color = 4,
         Scale = 0.7,
-        Name = "Plastic Surgeon",
-    }]]
+        Name = "Chirurgie esthétique",
+    }
 }
 
 Config.TargetConfig = {
@@ -135,42 +135,42 @@ Config.TargetConfig = {
         model = "s_f_m_shop_high",
         scenario = "WORLD_HUMAN_STAND_MOBILE",
         icon = "fas fa-tshirt",
-        label = "Open Clothing Store",
+        label = "Magasin de vêtement",
         distance = 3
     },
     ["barber"] = {
         model = "s_m_m_hairdress_01",
         scenario = "WORLD_HUMAN_STAND_MOBILE",
         icon = "fas fa-scissors",
-        label = "Open Barber Shop",
+        label = "Barbier",
         distance = 3
     },
     ["tattoo"] = {
         model = "u_m_y_tattoo_01",
         scenario = "WORLD_HUMAN_STAND_MOBILE",
         icon = "fas fa-pen",
-        label = "Open Tattoo Shop",
+        label = "Tatoueur",
         distance = 3
     },
-    --[[["surgeon"] = {
+    ["surgeon"] = {
         model = "s_m_m_doctor_01",
         scenario = "WORLD_HUMAN_STAND_MOBILE",
         icon = "fas fa-scalpel",
-        label = "Open Surgeon",
+        label = "Chirurgie esthétique",
         distance = 3
-    },]]
+    },
     ["clothingroom"] = {
         model = "mp_g_m_pros_01",
         scenario = "WORLD_HUMAN_STAND_MOBILE",
         icon = "fas fa-sign-in-alt",
-        label = "Open Job / Gang Clothes Menu",
+        label = "Garde robe",
         distance = 3
     },
     ["playeroutfitroom"] = {
         model = "mp_g_m_pros_01",
         scenario = "WORLD_HUMAN_STAND_MOBILE",
         icon = "fas fa-sign-in-alt",
-        label = "Open Outfits Menu",
+        label = "Garde robe",
         distance = 3
     },
 }
@@ -543,8 +543,8 @@ Config.Stores = {
             vector3(-298.23013305664, 6199.2451171875, 31.49),
             vector3(-294.1501159668, 6203.2700195312, 31.49)
         }
-    }
-    --[[{
+    },
+    {
         type = "surgeon",
         coords = vector4(298.78, -572.81, 43.26, 114.27),
         size = vector3(4, 4, 4),
@@ -556,7 +556,7 @@ Config.Stores = {
             vector3(293.56317138672, -572.60675048828, 43.26),
             vector3(296.28656005859, -570.330078125, 43.26)
         }
-    }]]
+    }
 }
 
 
