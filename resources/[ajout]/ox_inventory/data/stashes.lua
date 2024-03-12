@@ -1,17 +1,18 @@
 return {
 	{
-		coords = vec3(452.3, -991.4, 30.7),
+		coords = vec3(452.3, -991.4, 29.70),
 		target = {
-			loc = vec3(451.25, -994.28, 30.69),
+			loc = vec3(451.25, -994.28, 29.70),
 			length = 1.2,
 			width = 5.6,
 			heading = 0,
 			minZ = 29.49,
 			maxZ = 32.09,
-			label = 'Open personal locker'
+			label = 'Casier personnel',
+			debug = false
 		},
 		name = 'policelocker',
-		label = 'Personal locker',
+		label = 'Casier personnel',
 		owner = true,
 		slots = 70,
 		weight = 70000,
@@ -27,10 +28,11 @@ return {
 			heading = 340,
 			minZ = 43.34,
 			maxZ = 44.74,
-			label = 'Open personal locker'
+			label = 'Casier personnel',
+			debug = false
 		},
 		name = 'emslocker',
-		label = 'Personal Locker',
+		label = 'Casier personnel',
 		owner = true,
 		slots = 70,
 		weight = 70000,
@@ -46,7 +48,8 @@ return {
 			heading = 320,
             minZ=33.34,
             maxZ=41.74,
-			label = 'Coffre Patron'
+			label = 'Coffre Patron',
+			debug = false
 		},
 		name = 'emspatronlocker',
 		label = 'Coffre Patron',
@@ -63,12 +66,13 @@ return {
 			length = 2.4,
 			width = 1.2,
 			heading = 320,
-          minZ=23.54,
-          maxZ=25.54,
-			label = 'Coffre personnel'
+			minZ=23.54,
+			maxZ=25.54,
+			label = 'Casier personnel',
+			debug = false
 		},
 		name = 'emspersonnellocker',
-		label = 'Coffre personnel',
+		label = 'Casier personnel',
 		owner = true,
 		slots = 30,
 		weight = 70000,
@@ -84,10 +88,11 @@ return {
 			heading = 329,
             minZ=81.45,
             maxZ=82.45,
-			label = 'Coffre Taxi'
+			label = 'Coffre patron',
+			debug = false
 		},
 		name = 'taxilocker',
-		label = 'Coffre Taxi',
+		label = 'Coffre patron',
 		owner = true,
 		slots = 70,
 		weight = 70000,
@@ -103,7 +108,8 @@ return {
 			heading = 30,
             minZ=28.27,
             maxZ=29.82,
-			label = 'Coffre Patron'
+			label = 'Coffre Patron',
+			debug = false
 		},
 		name = 'Nightclubpatronlocker',
 		label = 'Coffre Patron',
@@ -122,10 +128,11 @@ return {
 			heading = 30,
             minZ=27.77,
             maxZ=30.37,
-			label = 'Coffre personnel'
+			label = 'Casier personnel',
+			debug = false
 		},
 		name = 'nightclubpersonnellocker',
-		label = 'Coffre personnel',
+		label = 'Casier personnel',
 		owner = true,
 		slots = 30,
 		weight = 70000,
@@ -141,7 +148,8 @@ return {
 			heading = 300,
             minZ=28.27,
             maxZ=29.32,
-			label = 'Réfrigirateur'
+			label = 'Réfrigirateur',
+			debug = false
 		},
 		name = 'Nightclubfrigolocker',
 		label = 'Réfrigirateur',
@@ -151,7 +159,7 @@ return {
 		groups = {['nightclub'] = 0}
 	},
 
-{
+	{
         coords = vec3(128.13, -1283.45, 28.47),
         target = {
             loc = vec3(128.13, -1283.45, 28.47),
@@ -160,7 +168,8 @@ return {
             heading = 65,
             minZ=28.07,
             maxZ=29.47,
-            label = 'Bar'
+            label = 'Bar',
+			debug = false
         },
         name = 'Nightclubbarlocker',
         label = 'Bar',

@@ -49,12 +49,14 @@ return {
 				size = vec3(3.8, 1.05, 0.15),
 				distance = 1.5,
 				rotation = 315.0,
+                debug = false,
 			},
 			{
 				coords = vec3(-346.1, -130.45, 39.0),
 				size = vec3(3.8, 1.05, 0.15),
 				distance = 1.5,
 				rotation = 70.0,
+                debug = false,
 			},
 		},
         label = 'Atelier mécano',
@@ -181,10 +183,12 @@ return {
 				size = vec3(3.8, 1.05, 0.15),
 				distance = 1.5,
 				rotation = 315.0,
+                debug = false,
 			},
 		},
         label = 'Atelier Fonderie',
 		blip = { id = 477, colour = 47, scale = 0.5 },
+		--groups = {['mineur'] = 0},
 	},
 	{
 		items = {
@@ -232,10 +236,12 @@ return {
 				size = vec3(1.8, 1.0, 1.0),
 				distance = 1.5,
 				rotation = 340.0,
+                debug = false,
 			},
 		},
         label = 'Atelier Menuiserier',
 		blip = { id = 478, colour = 16, scale = 0.5 },
+		--groups = {['menuisier'] = 0},
 	},
 	{
 		items = {
@@ -294,10 +300,12 @@ return {
 				size = vec3(5.8, 3.05, 0.15),
 				distance = 1.5,
 				rotation = 315.0,
+                debug = false,
 			},
 		},
         label = 'Atelier Vigneron',
 		blip = { id = 93, colour = 16, scale = 0.5 },
+		--groups = {['vigneron'] = 0},
 	},
     {
 		items = {
@@ -329,10 +337,12 @@ return {
 				size = vec3(5.8, 3.05, 0.15),
 				distance = 1.5,
 				rotation = 315.0,
+                debug = false,
 			},
 		},
         label = 'Atelier Abatteur',
 		blip = { id = 267, colour = 16, scale = 0.5 },
+		--groups = {['abbateur'] = 0},
 	},
 	{
 		items = {
@@ -415,10 +425,12 @@ return {
 				size = vec3(5.8, 3.05, 0.15),
 				distance = 1.5,
 				rotation = 315.0,
+                debug = false,
 			},
 		},
         label = 'Atelier Agriculteur',
 		blip = { id = 269, colour = 16, scale = 0.5 },
+		--groups = {['agriculteur'] = 0},
 	},
     {
 		items = {
@@ -549,6 +561,7 @@ return {
 				size = vec3(1.0, 0.8, 0.5),
 				distance = 1.5,
 				rotation = 30.0,
+                debug = false,
 			},
 		},
 		--blip = { id = 267, colour = 16, scale = 0.5 },
