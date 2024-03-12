@@ -6,9 +6,9 @@
     "confirm": "Confirmer",
     "more": "Plus..."
   },
-  "txadmin_announcement": "Annonce du serveur par %s",
-  "txadmin_dm": "Message direct de %s",
-  "txadmin_warn": "Vous avez été prévenu par %s",
-  "txadmin_warn_content": "%s \nID d'action : %s",
-  "txadmin_scheduledrestart": "Redémarrage programmé"
+  "txadmin_announcement": "Server announcement by %s",
+  "txadmin_dm": "Direct Message from %s",
+  "txadmin_warn": "You have been warned by %s",
+  "txadmin_warn_content": "%s  \nAction ID: %s",
+  "txadmin_scheduledrestart": "Scheduled Restart"
 }
