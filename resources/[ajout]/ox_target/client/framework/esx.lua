@@ -1,6 +1,6 @@
 local ESX = exports.es_extended:getSharedObject()
 local utils = require 'client.utils'
-local groups = { 'job', 'job2' }
+local groups = { 'job', 'job2', 'job3' }
 local playerGroups = {}
 local playerItems = utils.getItems()
 local usingOxInventory = utils.hasExport('ox_inventory.Items')
@@ -50,6 +50,7 @@ RegisterNetEvent('esx:setJob3', function(job)
     if source == '' then return end
     playerGroups.job3 = job
 end)
+
 
 RegisterNetEvent('esx:addInventoryItem', function(name, count)
     playerItems[name] = count

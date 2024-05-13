@@ -337,7 +337,7 @@ local Items = require 'modules.items.client'
 local usingItem = false
 
 ---@param data { name: string, label: string, count: number, slot: number, metadata: table<string, any>, weight: number }
-lib.callback.register('ox_inventory:usingItem', function(data)
+lib.callback.register('ox_inventory:usingItem', function(data, noAnim)
 	local item = Items[data.name]
 
 	if item and usingItem then
@@ -347,10 +347,6 @@ lib.callback.register('ox_inventory:usingItem', function(data)
 
 		if type(item.anim) == 'string' then
 			item.anim = Animations.anim[item.anim]
-		end
-
-		if item.propTwo then
-			item.prop = { item.prop, item.propTwo }
 		end
 
 		if item.prop then
@@ -372,7 +368,7 @@ lib.callback.register('ox_inventory:usingItem', function(data)
 			item.disable.combat = true
 		end
 
-		local success = (not item.usetime or lib.progressBar({
+		local success = (not item.usetime or noAnim or lib.progressBar({
 			duration = item.usetime,
 			label = item.label or locale('using', data.metadata.label or data.label),
 			useWhileDead = item.useWhileDead,
@@ -413,10 +409,17 @@ end
 
 ---@param data table
 ---@param cb fun(response: SlotWithItem | false)?
-local function useItem(data, cb)
+---@param noAnim? boolean
+local function useItem(data, cb, noAnim)
 	local slotData, result = PlayerData.inventory[data.slot]
 
-	if not slotData or not canUseItem(data.ammo and true) then return end
+	if not slotData or not canUseItem(data.ammo and true) then
+        if currentWeapon then
+            return lib.notify({ id = 'cannot_perform', type = 'error', description = locale('cannot_perform') })
+        end
+
+        return
+    end
 
 	if currentWeapon?.timer and currentWeapon.timer > 100 then return end
 
@@ -424,7 +427,7 @@ local function useItem(data, cb)
 
     usingItem = true
     ---@type boolean?
-    result = lib.callback.await('ox_inventory:useItem', 200, data.name, data.slot, slotData.metadata)
+    result = lib.callback.await('ox_inventory:useItem', 200, data.name, data.slot, slotData.metadata, noAnim)
 
 	if result and cb then
 		local success, response = pcall(cb, result and slotData)
@@ -451,7 +454,7 @@ exports('useItem', useItem)
 
 ---@param slot number
 ---@return boolean?
-local function useSlot(slot)
+local function useSlot(slot, noAnim)
 	local item = PlayerData.inventory[slot]
 	if not item then return end
 
@@ -518,11 +521,11 @@ local function useSlot(slot)
 			useItem(data, function(result)
 				if result then
                     local sleep
-					currentWeapon, sleep = Weapon.Equip(item, data)
+					currentWeapon, sleep = Weapon.Equip(item, data, noAnim)
 
 					if sleep then Wait(sleep) end
 				end
-			end)
+			end, noAnim)
 		elseif currentWeapon then
 			if data.ammo then
 				if EnableWeaponWheel or currentWeapon.metadata.durability <= 0 then return end
@@ -653,6 +656,10 @@ local function useSlot(slot)
 			useItem(data)
 		end
 	end
+
+    if currentWeapon then
+        return lib.notify({ id = 'cannot_perform', type = 'error', description = locale('cannot_perform') })
+    end
 end
 exports('useSlot', useSlot)
 
@@ -797,7 +804,7 @@ local function registerCommands()
 		description = locale('reload_weapon'),
 		defaultKey = 'r',
 		onPressed = function(self)
-			if not currentWeapon or not canUseItem(true) then return end
+			if not currentWeapon or EnableWeaponWheel or not canUseItem(true) then return end
 
 			if currentWeapon.ammo then
 				if currentWeapon.metadata.durability > 0 then
@@ -829,7 +836,7 @@ local function registerCommands()
 			description = locale('use_hotbar', i),
 			defaultKey = tostring(i),
 			onPressed = function()
-				if invOpen or IsNuiFocused() or not invHotkeys then return end
+				if invOpen or EnableWeaponWheel or not invHotkeys or IsNuiFocused() then return end
 				useSlot(i)
 			end
 		})
@@ -1732,7 +1739,10 @@ RegisterNUICallback('swapItems', function(data, cb)
     swapActive = true
 
 	if data.toType == 'newdrop' then
-		if cache.vehicle or IsPedFalling(playerPed) then return cb(false) end
+		if cache.vehicle or IsPedFalling(playerPed) then
+			swapActive = false
+			return cb(false)
+		end
 
 		local coords = GetEntityCoords(playerPed)
 

@@ -68,11 +68,10 @@ function IsPlayerInGroup(player, filter)
             if grade2 and grade2 <= player.job2.grade then
                 return player.job2.name, player.job2.grade
             end
-
+            
             if grade3 and grade3 <= player.job3.grade then
                 return player.job3.name, player.job3.grade
             end
-            
         elseif tabletype == 'array' then
             for i = 1, #filter do
                 if player.job.name == filter[i] then

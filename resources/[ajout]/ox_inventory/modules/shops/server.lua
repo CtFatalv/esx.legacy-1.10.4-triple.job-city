@@ -29,7 +29,7 @@ local function setupShopItems(id, shopType, shopName, groups)
 				slot = i,
 				weight = Item.weight,
 				count = slot.count,
-				price = (server.randomprices and not slot.currency or slot.currency == 'money') and (math.ceil(slot.price * (math.random(100, 100)/100))) or slot.price or 0,
+				price = (server.randomprices and (not slot.currency or slot.currency == 'money')) and (math.ceil(slot.price * (math.random(100, 100)/100))) or slot.price or 0,
 				metadata = slot.metadata,
 				license = slot.license,
 				currency = slot.currency,
@@ -249,6 +249,7 @@ lib.callback.register('ox_inventory:buyItem', function(source, data)
 					shopId = shopId,
 					toInventory = playerInv.id,
 					toSlot = data.toSlot,
+					fromSlot = fromData,
 					itemName = fromData.name,
 					metadata = metadata,
 					count = count,
@@ -267,7 +268,7 @@ lib.callback.register('ox_inventory:buyItem', function(source, data)
 
 				if server.syncInventory then server.syncInventory(playerInv) end
 
-				local message = locale('purchased_for', count, fromItem.label, (currency == 'money' and locale('$') or math.groupdigits(price)), (currency == 'money' and math.groupdigits(price) or ' '..Items(currency).label))
+				local message = locale('purchased_for', count, metadata?.label or fromItem.label, (currency == 'money' and locale('$') or math.groupdigits(price)), (currency == 'money' and math.groupdigits(price) or ' '..Items(currency).label))
 
 				if server.loglevel > 0 then
 					if server.loglevel > 1 or fromData.price >= 500 then
