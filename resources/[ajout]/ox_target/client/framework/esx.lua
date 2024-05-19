@@ -51,7 +51,6 @@ RegisterNetEvent('esx:setJob3', function(job)
     playerGroups.job3 = job
 end)
 
-
 RegisterNetEvent('esx:addInventoryItem', function(name, count)
     playerItems[name] = count
 end)
